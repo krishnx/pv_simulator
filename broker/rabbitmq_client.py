@@ -8,6 +8,7 @@ from utils.retry_exceptions import retry
 
 logger = get_logger(__name__)
 
+
 class RabbitMQClient(IBroker):
     """
     RabbitMQ client for publishing and consuming messages.

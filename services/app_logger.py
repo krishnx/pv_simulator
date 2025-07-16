@@ -1,6 +1,7 @@
 import logging
 
-def get_logger(name: str = "pv_simulator") -> logging.Logger:
+
+def get_logger(name: str = 'pv_simulator') -> logging.Logger:
     logger = logging.getLogger(name)
     if not logger.handlers:
         handler = logging.StreamHandler()

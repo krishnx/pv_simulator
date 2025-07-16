@@ -4,6 +4,7 @@ from services.app_logger import get_logger
 
 logger = get_logger(__name__)
 
+
 def retry(max_retries=10, delay=3, exception_types=(Exception,)):
     def decorator(func):
         @wraps(func)

@@ -6,6 +6,7 @@ from services.app_logger import get_logger
 
 logger = get_logger(__name__)
 
+
 class PVSimulator(IProducer):
     def __init__(self, broker, file_logger):
         self.broker = broker
