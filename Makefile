@@ -14,7 +14,7 @@ help:
 	@echo "  make logs       View logs from services"
 	@echo "  make test       Run unit tests"
 	@echo "  make lint       Run flake8 linting"
-	@echo "  make op     tails output file"
+	@echo "  make op         tails output file"
 
 build:
 	$(DOCKER_COMPOSE) build --no-cache

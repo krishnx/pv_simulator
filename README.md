@@ -35,5 +35,5 @@ make logs
 
 ### 6. View the output
 ```bash
-make output
+make op
 ```
