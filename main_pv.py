@@ -1,13 +1,17 @@
 from producers.pv_simulator import PVSimulator
 from broker.rabbitmq_client import RabbitMQClient
-from services.logger import FileLogger
+from services.file_logger import FileLogger
 
+from services.app_logger import get_logger
+
+logger = get_logger(__name__)
 
 def main():
     broker = RabbitMQClient()
-    logger = FileLogger()
-    pv_simulator = PVSimulator(broker, logger)
+    file_logger = FileLogger()
+    pv_simulator = PVSimulator(broker, file_logger)
     pv_simulator.produce()
+    logger.debug('PV Simulator started successfully.')
 
 
 if __name__ == '__main__':

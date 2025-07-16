@@ -30,6 +30,7 @@ class PVSimulatorService:
             # Use a sine function for a smooth bell curve effect
             # math.sin(scaled_time * math.pi) goes from 0 (at 0) to 1 (at 0.5) to 0 (at 1)
             pv_power = self.MAX_PV_POWER * math.sin(scaled_time * math.pi)
+
             return round(max(0.0, pv_power), 2)
         else:
             return 0.0  # No PV power at night

@@ -1,6 +1,8 @@
 import time
 from functools import wraps
+from services.app_logger import get_logger
 
+logger = get_logger(__name__)
 
 def retry(max_retries=10, delay=3, exception_types=(Exception,)):
     def decorator(func):
@@ -11,7 +13,7 @@ def retry(max_retries=10, delay=3, exception_types=(Exception,)):
                 try:
                     return func(*args, **kwargs)
                 except exception_types as e:
-                    print(f'[Retry] Error: {e}, retrying in {delay} seconds...')
+                    logger.warning(f'Retry Error: {e}, retrying in {delay} seconds...')
                     time.sleep(delay)
                     retries += 1
 

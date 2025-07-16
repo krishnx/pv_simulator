@@ -2,12 +2,14 @@ from datetime import datetime
 
 from interfaces.i_producer import IProducer
 from services.simulator import PVSimulatorService
+from services.app_logger import get_logger
 
+logger = get_logger(__name__)
 
 class PVSimulator(IProducer):
-    def __init__(self, broker, logger):
+    def __init__(self, broker, file_logger):
         self.broker = broker
-        self.logger = logger
+        self.file_logger = file_logger
         self.simulator = PVSimulatorService()
 
     def produce(self):
@@ -23,7 +25,7 @@ class PVSimulator(IProducer):
                 'net': net,
                 'direction': direction,
             }
-            self.logger.log(log_entry)
-            print(f'[PV] Logged: {log_entry}')
+            self.file_logger.log(log_entry)
+            logger.debug(f'PV Logged: {log_entry}')
 
         self.broker.consume(callback)
